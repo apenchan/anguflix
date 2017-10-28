@@ -1,0 +1,28 @@
+.saved-collection{
+    background-color: red;
+    padding: 20px;
+}
+
+.movies{
+    overflow: hidden;
+    width: 100%;
+}
+.movie{
+    float: left;
+    width: 25%;
+    margin: 2%;
+}
+img.movie-img{
+    height: 450px;
+    width: 350px;
+}
+.form-group{
+    width: 100%;
+}
+.form-control{
+	width: 25%;
+	display: inline-block;
+}
+/* .movie-description{
+
+} */
