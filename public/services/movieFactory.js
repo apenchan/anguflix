@@ -1,4 +1,4 @@
-app.factory('allMovies', function () {
+app.factory('allMovies', function ($http) {
   
     var movies = [
       { movieTitle: "Titanic", movieDate: "1997", moviePrice: 3, movieImg: "https://upload.wikimedia.org/wikipedia/en/2/22/Titanic_poster.jpg", movieDescriptin: "Titanic is a 1997 American epic romantic disaster movie. It was directed, written, and co-produced by James Cameron. The movie is about the 1912 sinking of the RMS Titanic. It stars Kate Winslet and Leonardo DiCaprio." },
@@ -33,6 +33,16 @@ app.factory('allMovies', function () {
       savedMovies.splice(index, 1)
       console.log("I was clicked");
     }
+
+    var searchMoviesAPI = function(name){
+      console.log("clicked to get movies API");
+      console.log(name)
+      return $http.get("http://www.omdbapi.com/?t="+name+"&apikey=47060fc8")
+    .then(function(response){
+      console.log(response.data)
+      return response.data;
+    })
+  }
   
     return {
       movies: movies,
@@ -42,7 +52,8 @@ app.factory('allMovies', function () {
       getDates: getDates,
       removeFilm: removeFilm,
       budget: budget,
-      getBudget:getBudget
+      getBudget:getBudget,
+      searchMoviesAPI: searchMoviesAPI
   
   
     }
