@@ -50,12 +50,12 @@
 
 
     <div class="search-other-movies">
-        <div class="searched-movie" ng-repeat="x in getMovieAPI">
-            {{x.Title}} {{Title}}{{x.Actors}}test test test {{x}}
-            <p>HELELELELELLLLLEOOO</p>
-          </div>
       <input type="text" ng-model="name" placeholder="Find other movies" />
       <button type="button" ng-click="searchMoviesAPI(name)">Search</button>
+      <div class="searched-movie" ng-repeat="x in getMovieAPI">
+        {{x.Title}} {{Title}}{{x.Actors}}test test test {{x}} {{x.DVD}}
+        <p>HELELELELELLLLLEOOO</p>
+      </div>
     </div>
 
   </div>
