@@ -15,11 +15,15 @@
 
 
   <div class="movie-collection" ng-controller="allMoviesCtrl">
+    <!--main-nav bar here -->
+    <div class="headline-nav">
+      <h3>Angular Movie Watch</h3>
+    </div>
 
     <!--my selections here -->
     <div class="saved-collection">
       <div class="form-group search-my-saved">
-        <input class="form-control" type="text" ng-model="movie" placeholder="Search Title" />
+        <input class="form-control" type="text" ng-model="movie" placeholder="Search Savied Titles" />
         <select class="select-years" ng-model="movieYears">
           <option value>Any Year</option>
             <option ng-repeat="year in years">{{year}}</option>
@@ -30,11 +34,18 @@
         <div>{{amount}}$</div>
       </div>
       <div class="movie" ng-repeat="movie in myMovies| filter:{movieTitle:movie} | filter:{movieDate:movieYears} | filter:{movie: moviePrice}">
-        {{movie.movieTitle}} {{movie.movieDate}} ${{movie.moviePrice}}<img class="movie-img" ng-src="{{movie.movieImg}}">        {{movie.movieDescriptin}}
+        <!-- <div class="movie-info">{{movie.movieTitle}} {{movie.movieDate}} ${{movie.moviePrice}}</div> -->
+        <div class="mouse-test" ng-init="showInfo-false">
+          <div class="show-movie-info" ng-mouseover="showInfo = true" ng-mouseleave="showInfo = false">
+           <img class="movie-img" ng-src="{{movie.movieImg}}">
+          <div class="show-info" ng-show="showInfo">{{movie.movieTitle}}</div>
+        </div> 
+        </div>
         <span class="remove-button" ng-show="trashClicked">
           <a ng-click="removeFilm()">Remove</a>
       </span>
-      </div>
+    </div>
+    <p ng-hide="myMovies.length">No movies saved</p>
     </div>
 
 
@@ -44,7 +55,7 @@
         <input type="text" ng-model="movieName" placeholder="Search Title" />
       </div>
       <div class="movie" ng-repeat="movie in movies | filter:{movieTitle:movieName} track by $index" ng-click="addToMyMovies(movie)">
-        {{movie.movieTitle}} {{movie.movieDate}} ${{movie.moviePrice}}<img class="movie-img" ng-src="{{movie.movieImg}}">        {{movie.movieDescriptin}}
+        <div class="movie-info">{{movie.movieTitle}} {{movie.movieDate}} ${{movie.moviePrice}}</div><img class="movie-img" ng-src="{{movie.movieImg}}">
       </div>
     </div>
 
@@ -52,9 +63,8 @@
     <div class="search-other-movies">
       <input type="text" ng-model="name" placeholder="Find other movies" />
       <button type="button" ng-click="searchMoviesAPI(name)">Search</button>
-      <div class="searched-movie" ng-repeat="x in getMovieAPI">
-        {{x.Title}} {{Title}}{{x.Actors}}test test test {{x}} {{x.DVD}}
-        <p>HELELELELELLLLLEOOO</p>
+      <!-- <div class="searched-movie" ng-src="x in getMovieAPI"> -->
+       <img class="imdb-poster" ng-src="{{moviePoster}}"/>{{movieTitle}} {{movieYear}}
       </div>
     </div>
 

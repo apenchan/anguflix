@@ -2,8 +2,7 @@ var test;
 
 app.controller('allMoviesCtrl', function ($scope, allMovies) {
 
-	// $scope.getMovieAPI = 
-	$scope.test = "test"
+	// $scope.getMovieAPI = []
 	//all movies array
 	$scope.movies = allMovies.movies;
 
@@ -39,10 +38,14 @@ app.controller('allMoviesCtrl', function ($scope, allMovies) {
 		.then(function(response){
 			console.log("I got here")
 			console.log(response)
-			$scope.getMovieAPI = response.data;
+			// $scope.getMovieAPI = response;
+			$scope.moviePoster = response.Poster;
+			$scope.movieTitle = response.Title;
+			$scope.movieYear = response.Year;
+
 	})
 }
-$scope.searchMoviesAPI(name);
+// $scope.searchMoviesAPI(name);
 
 	// $scope.movieBudget = function(amount){
 	// 	return amount - allMovies.savedMovies.moviePrice; 
