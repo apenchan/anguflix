@@ -38,7 +38,7 @@ app.factory('allMovies', function ($http) {
     var searchMoviesAPI = function(name){
       console.log("clicked to get movies API");
       console.log(name)
-      return $http.get("http://www.omdbapi.com/?t="+name+"&apikey=47060fc8")
+      return $http.get("https://www.omdbapi.com/?t="+name+"&apikey=47060fc8")
     .then(function(response){
       console.log(response.data)
       return response.data;
