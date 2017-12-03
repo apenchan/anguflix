@@ -1,3 +1,37 @@
+@font-face{
+    font-family: "LemonMilkbold.otf";
+    src: url("../fonts/LemonMilkbold.otf");
+}
+
+.headline-nav{
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background-color: red;
+}
+.main-logo{
+    font-family: "LemonMilkbold.otf";
+    font-size: 30px;
+    padding-left: 5%;
+    padding-top: 5px;
+
+}
+.movie-collection{
+    height: 100vh;
+}
+.if-no-movies{
+    text-align: center;
+    margin: 5%;
+}
+.search-title-all{
+    padding: 1%;
+}
+.saved-collection{
+    margin-top: 30px;
+    height: 50vh;
+}
 .form-group{
     width: 100%;
     padding-left: 1%;
@@ -12,8 +46,7 @@
     padding-top: 15px;
 } */
 .search-my-saved{
-    background-color: red;
-    padding-top: 15px;
+    padding-top: 36px;
 }
 
 .movies{
@@ -44,6 +77,13 @@ img.movie-img:hover {
     margin: 5%;
     font-size: 20px;
 }
+.search-other-movies{
+    padding: 1%;
+}
+.imdb-movies{
+    padding: 20px;
+}
+
 
 /* .movie-description{
 
