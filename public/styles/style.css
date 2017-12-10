@@ -40,6 +40,9 @@
 	width: 25%;
 	display: inline-block;
 }
+.testSaved{
+    background-color: red;
+}
 
 /* .saved-collection{
     background-color: red;

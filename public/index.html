@@ -6,74 +6,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <base href="/">
   <link rel="stylesheet" href="./font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="./bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="./styles/style.css">
 </head>
 
 <body ng-app="anguFlix">
-  <!-- <nav class="headline-nav">
-        <h3>Angular Movie Watch</h3>
-    </nav> -->
-  <div class="movie-collection" ng-controller="allMoviesCtrl">
-    <nav class="headline-nav">
-      <div class="main-logo">Movier</div>
-    </nav>
-    <!--my selections here -->
-    <div class="saved-collection">
-      <div class="form-group search-my-saved">
-        <input class="form-control" type="text" ng-model="movie" placeholder="Search Savied Titles" />
-        <select class="select-years" ng-model="movieYears">
-          <option value>Any Year</option>
-            <option ng-repeat="year in years">{{year}}</option>
-        </select>
-        <i class="fa fa-trash-o" aria-hidden="true" ng-hide="trashClicked" ng-click="showRemoveOption()"></i>
-        <i class="fa fa-check" ng-show="trashClicked" ng-click="showRemoveOption()" aria-hidden="true"></i>
-        <!-- <div class="budget-counter" ng-repeat="movie in movieBudget track by $index" ng-model="amount">${{amount - movie.moviePrice}}</div> -->
-        <!-- <div>{{amount}}$</div> -->
-      </div>
-      <div class="movie" ng-repeat="movie in myMovies| filter:{movieTitle:movie} | filter:{movieDate:movieYears} | filter:{movie: moviePrice}">
-        <!-- <div class="movie-info">{{movie.movieTitle}} {{movie.movieDate}} ${{movie.moviePrice}}</div> -->
-        <div class="mouse-test" ng-init="showInfo-false">
-          <div class="show-movie-info" ng-mouseover="showInfo = true" ng-mouseleave="showInfo = false">
-            <img class="movie-img" ng-src="{{movie.movieImg}}">
-            <div class="show-info" ng-show="showInfo">{{movie.movieTitle}}</div>
-          </div>
+  <div class="container" ng-controller="AuthCtrl">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" ui-sref="movies">Anguflix</a>
         </div>
-        <span class="remove-button" ng-show="trashClicked">
-          <a ng-click="removeFilm()">Remove</a>
-      </span>
+        <a ui-sref="profile({id: user._id, profileParam: profile})"><p class="navbar-text">{{currentUser}}</p></a>
+        <a ng-hide="currentUser" target="_self" href="/auth/facebook" class="btn navbar-btn btn-primary">Login</a>
+        <button ng-show="currentUser" type="button" ng-click="logout()" class="btn logout btn-default navbar-btn">Log Out</button>
+        <!-- <button type="button" ng-click="logout()" class="btn btn-default navbar-btn">Log Out</button> -->
       </div>
-      <p class="if-no-movies" ng-hide="myMovies.length">No movies saved. Click on a title below to save to your collection</p>
-    </div>
-
-
-    <!-- This is the full movie list below-->
-    <div class="movies">
-      <div class="form-group search-title-all">
-        <input class="form-control" type="text" ng-model="movieName" placeholder="Search Title" />
-      </div>
-      <div class="movie" ng-repeat="movie in movies | filter:{movieTitle:movieName} track by $index" ng-click="addToMyMovies(movie)">
-        <div class="movie-info">{{movie.movieTitle}} {{movie.movieDate}} </div><img class="movie-img" ng-src="{{movie.movieImg}}">
-      </div>
-    </div>
-
-
-    <div class="form-group search-other-movies">
-      <input class="form-control" type="text" ng-model="name" placeholder="Find other movies" />
-      <button type="button" ng-click="searchMoviesAPI(name)">Search</button>
-      <!-- <div class="searched-movie" ng-src="x in getMovieAPI"> -->
-      <div class="imdb-movies">
-        <img class="imdb-poster" ng-src="{{moviePoster}}" />{{movieTitle}} {{movieYear}}
-      </div>
-    </div>
+    </nav>
   </div>
-
+  <ui-view></ui-view>
 </body>
-
+<!-- <ui-view></ui-view> -->
 <script src="angular/angular.js"></script>
+<script src="@uirouter/core/_bundles/ui-router-core.js"></script>
+<script src="@uirouter/angularjs/release/ui-router-angularjs.js"></script>
 <script src="app.js" type="text/javascript"></script>
-<script src="allMoviesController.js" type="text/javascript"></script>
+<script src="./controllers/authController.js"></script>
+<script src="./controllers/allMoviesController.js" type="text/javascript"></script>
+<script src="./controllers/profileController.js"></script>
 <script src="./services/movieFactory.js" type="text/javascript"></script>
 
 </html>
