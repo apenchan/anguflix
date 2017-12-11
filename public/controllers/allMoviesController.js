@@ -1,4 +1,4 @@
-app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allMovies) {
+app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allMovies, profileFactory) {
 
 
 
@@ -7,12 +7,17 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 		$scope.movies = response;
 	})
 
-	// allMovies.getUserInfo().then(function(response){
+	// allMovies.getSavedMovies().then(function(response){
 	// 	$scope.userInfo = response;
 	// })
 
-	allMovies.getSavedMovies().then(function(response){
-		$scope.getUserInfo = response;
+	//SEE MOVIEFACTORY FOR THIS
+	allMovies.getUserInfo().then(function(response){
+		$scope.userInfo = response.data;
+	})
+
+	profileFactory.getDBSavedMovies().then(function(){
+		$scope.user = response;
 	})
 
 	//myMovieCollection array
@@ -63,12 +68,12 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 	})
 }
 
-	$scope.getUserInfo  = function(userId){
+	$scope.getSavedMovies  = function(userId){
 		allMovies.getUserInfo(userId)
-		.then(function(response){
+		.then(function(data){
 			console.log("getting user info")
-			console.log(response)
-			$scope.savedMoviesInfo = response;
+			console.log(data)
+			$scope.userInfo = data;
 		})
 	}
 

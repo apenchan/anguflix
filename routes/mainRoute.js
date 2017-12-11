@@ -13,6 +13,16 @@ router.get("/", function(req, res){
   })
 })
 
+router.get('/:id', function(req, res){
+  User.findById(req.params.id, function(err, user){
+    if(err){
+      console.log("This may not be a good route", err)
+    } else {
+      res.send(user)
+    }
+  })
+})
+
 // router.get('/profile', function(req, res){
 //   User.findById(req.user.id).then(function(user){
 //     console.log("hellllllllllooooo")

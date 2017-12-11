@@ -1,6 +1,8 @@
 var app = angular.module("anguFlix", ['ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+  // var cors = new EnableCorsAttribute("*", "*", "*");
+  // config.EnableCors(cors);
   $locationProvider.html5Mode(true);
   $stateProvider
   .state('movies', {

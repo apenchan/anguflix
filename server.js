@@ -68,7 +68,17 @@ app.use(passport.session());
 app.use('/movies', mainRoute);
 app.use('/auth', authRoute);
 
-app.get('/profile/:id/movie/', function(req, res){
+// app.get('/movies/:id', function(req, res){
+//   User.findById(req.params.id, function(err, user){
+//     if(err){
+//       console.log("This may not be a good route", err)
+//     } else {
+//       res.send(user)
+//     }
+//   })
+// })
+
+app.get('/profile/:id/movie', function(req, res){
   console.log('user id: ' + req.params.id);
   User.findById(req.params.id, function(err, user){
     if(err){
@@ -81,7 +91,7 @@ app.get('/profile/:id/movie/', function(req, res){
   })
 })
 
-app.put('/profile/:id/movie/', function(req, res){
+app.put('/profile/:id/movie', function(req, res){
   var movie = new Movie(req.body)
    console.log("query is " + movie)
    console.log(req.params)
@@ -100,8 +110,16 @@ app.put('/profile/:id/movie/', function(req, res){
   })
 })
 
-app.all('*', function(req, res) {
+// app.all('*', function(req, res) {
+//   res.sendFile(__dirname + "/public/index.html")
+// });
+
+app.all('[^.]+', function(req, res, next) {
   res.sendFile(__dirname + "/public/index.html")
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  // next();
 });
 
 app.listen(port);

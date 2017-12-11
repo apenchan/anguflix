@@ -9,7 +9,7 @@ app.factory('allMovies', function ($http) {
       console.log(err);
     })
   }
-
+  //this returns the "hello", but also a bunch of random js.
   var getUserInfo = function(id){
     return $http.get('/profile/' + id)
     console.log(id)
@@ -22,8 +22,8 @@ app.factory('allMovies', function ($http) {
   
     var savedMovies = [];
 
-    var getSavedMovies = function(userId){
-      return $http.get('/profile/' + userId + '/movie')
+    var getSavedMovies = function(id){
+      return $http.get('/profile/' + id + '/movie')
       .then(function(response){
         console.log(response.data)
         return response.data
@@ -32,23 +32,16 @@ app.factory('allMovies', function ($http) {
       })
     }
   
-    var addMovie = function (userId, movie) {
+    var addMovie = function (id, movie) {
       // console.log(user)
       savedMovies.push(movie);
       console.log(savedMovies);
-      return $http.put('/profile/' + userId + '/movie/', movie)
+      return $http.put('/profile/' + id + '/movie', movie)
       .then(function(response){
-        return response;
+        console.log(response.data)
+        return response.data;
       })
     }
-
-    // var saveMovieToDB = function(movie){
-    //   return $http.put('/profile', movie)
-    //   .then(function(response){
-    //     console.log("this is the response: " + response.data);
-    //     return response.data;
-    //   })
-    // }
   
     var years = [];
     var getDates = function () {
