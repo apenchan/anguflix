@@ -1,45 +1,58 @@
-app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allMovies, profileFactory) {
+app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allMovies) {
 
-
+	// $scope.savedMovies =[];
 
 	//all Movies from DB:
-	allMovies.allMoviesDB().then(function(response){
-		$scope.movies = response;
-	})
-
-	// allMovies.getSavedMovies().then(function(response){
-	// 	$scope.userInfo = response;
-	// })
+	allMovies.allMoviesDB()
+		.then(function(response){
+			$scope.movies = response;
+		})
 
 	//SEE MOVIEFACTORY FOR THIS
-	allMovies.getUserInfo().then(function(response){
-		$scope.userInfo = response.data;
-	})
+	// allMovies.getUserInfo().then(function(response){
+	// 	$scope.userInfo = response.data;
+	// })
 
-	profileFactory.getDBSavedMovies().then(function(){
-		$scope.user = response;
-	})
+	// allMovies.getUser().then(function(response){
+	// 	$scope.movies.savedMovies = response;
+	// })
+
+	allMovies.getUserMovies($rootScope.userId)
+		.then(function(response){
+			$scope.userMovies = response.savedMovies;
+		})
+		.catch(function(err){
+			console.log(err)
+		})
+
+	// profileFactory.getDBSavedMovies().then(function(){
+	// 	$scope.user = response;
+	// })
 
 	//myMovieCollection array
 	$scope.myMovies = allMovies.savedMovies;
 
 	//add to myMovieCollection array
-	// $scope.addToMyMovies = ;
+	$scope.addToMyMovies = [];
 
+	//this work.
 	$scope.addToMyMovies = function(movie){
-		alert("I was kinda clicked")
-		console.log($scope.userId)
-		$scope.addMovie = allMovies.addMovie($scope.userId, movie);
+		allMovies.addMovie($scope.userId, movie)
+			.then(function(data){
+				$scope.userMovies = data.savedMovies
+			})
+			.catch(function(err){
+				console.log(err)
+			});
 	}
 
 	// $scope.addToMyMovies = function(userId, movie){
 	// 	alert("I was kinda clicked")
-	// 	console.log($scope.userId)
-	// 	// allMovies.addToMyMovies($scope.userId, movie)
-	// 	// .then(function(userSavedMovies){
-	// 		$scope.amount = allMovies.addMovie($scope.userId, movie);
-	// 	// })
-	// 	// $scope.amount = allMovies.addMovie($scope.userId, movie);
+	// 	// console.log($stateParams.user.id)
+	// 	allMovies.addMovie($scope.userId, movie)
+	// 	.then(function(movies_from_db){
+	// 		$scope.userInfo.savedMovies = movies_from_db.savedMovies;
+	// 	})
 	// }
 
 	$scope.years = allMovies.getDates();
@@ -54,12 +67,10 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 		allMovies.removeFilm(movie);
 	}
 
-	$scope.movieBudget = allMovies.savedMovies;
 
 	$scope.searchMoviesAPI = function(name){
 		allMovies.searchMoviesAPI(name)
 		.then(function(response){
-			console.log(response)
 			// $scope.getMovieAPI = response;
 			$scope.moviePoster = response.Poster;
 			$scope.movieTitle = response.Title;
@@ -67,14 +78,5 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 
 	})
 }
-
-	$scope.getSavedMovies  = function(userId){
-		allMovies.getUserInfo(userId)
-		.then(function(data){
-			console.log("getting user info")
-			console.log(data)
-			$scope.userInfo = data;
-		})
-	}
 
 });

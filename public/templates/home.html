@@ -1,8 +1,9 @@
 <div class="movie-collection" ng-controller="allMoviesCtrl">
   <!-- <nav class="headline-nav">
-      <div class="main-logo">Movier</div>-->
-  <div class="profile-link"><a ui-sref="profile({id: user._id, profileParam: profile})">Profile</a></div>
-  <!--</nav> -->
+      <div class="main-logo">Movier</div>
+      <div class="about">About Us</div>
+  <<div class="profile-link"><a ui-sref="profile({id: user._id, profileParam: profile})">Profile</a></div> 
+  </nav> -->
   <!--my selections here -->
   <div class="saved-collection">
     <div class="form-group search-my-saved">
@@ -16,44 +17,26 @@
       <!-- <div class="budget-counter" ng-repeat="movie in movieBudget track by $index" ng-model="amount">${{amount - movie.moviePrice}}</div> -->
       <!-- <div>{{amount}}$</div> -->
     </div>
-    <div class="movie" ng-repeat="movie in myMovies| filter:{Title:movie} | filter:{Year:movieYears} | filter:{movie: moviePrice}">
-      <!-- <div class="movie-info">{{movie.movieTitle}} {{movie.movieDate}} ${{movie.moviePrice}}</div> -->
-      <div class="mouse-test" ng-init="showInfo-false">
+    <div class="movie" ng-repeat="movie in userMovies| filter:{Title:movie} | filter:{Year:movieYears} | filter:{movie: moviePrice}">
+      <!-- <div class="movie-info">{{movie.movieTitle}} {{movie.movieDate}} ${{movie.moviePrice}}</div>
+      <div class="mouse-test" ng-init="showInfo-false"> -->
         <div class="show-movie-info" ng-mouseover="showInfo = true" ng-mouseleave="showInfo = false">
           <img class="movie-img" ng-src="{{movie.Poster}}">
-          <div class="show-info" ng-show="showInfo">{{movie.Title}}</div>
+          <div class="show-info" ng-show="showInfo">{{movie.Title}} <div class="movie-description">{{movie.Plot}}</div></div>
         </div>
       </div>
       <span class="remove-button" ng-show="trashClicked">
           <a ng-click="removeFilm()">Remove</a>
       </span>
     </div>
-    <p class="if-no-movies" ng-hide="myMovies.length">No movies saved. Click on a title below to save to your collection</p>
+    <p class="if-no-movies" ng-hide="userMovies.length">No movies saved. Click on a title below to save to your collection</p>
   </div>
 
-  <!-- This is to get user info below-->
-  <div class="testSaved">
-    <div class="movie" ng-repeat="x in userInfo track by $index">
-      <div class="user-saved-movies">{{x.savedMovies[0].Title}}</div>
-      <p>HELLLLLLOOOOOO</p>
-    </div>
-  </div>
-
-  <!-- This is to get user info below-->
   <!-- <div class="testSaved">
-    <div class="movie" ng-repeat="x in getUserProfile">
-      <div class="user-saved-movies">{{x}}</div>
-      <p>HELLLLLLOOOOOO</p>
-    </div>
+      <div class="movie" ng-repeat="x in userMovies track by $index">
+        <div class="user-saved-movies">{{x.Title}}</div>
+      </div>
   </div> -->
-
-  <!-- This is using the profileFactory-->
-  <div class="testSaved">
-    <div class="movie" ng-repeat="x in user">
-      <div class="user-saved-movies">{{x}}</div>
-      <p>Annnnnnnnnna</p>
-    </div>
-  </div>
 
   <!-- This is the full movie list below-->
   <div class="movies">
@@ -61,7 +44,13 @@
       <input class="form-control" type="text" ng-model="movieName" placeholder="Search Title" />
     </div>
     <div class="movie" ng-repeat="movie in movies | filter:{movieTitle:movieName} track by $index" ng-click="addToMyMovies(movie)">
-      <div class="movie-info">{{movie.Title}} {{movie.Year}} </div><img class="movie-img" ng-src="{{movie.Poster}}">
+      <!-- <div class="movie-info">{{movie.Title}} {{movie.Year}} </div><img class="movie-img" ng-src="{{movie.Poster}}"> -->
+      <div class="mouse-test" ng-init="showInfo-false">
+          <div class="show-movie-info" ng-mouseover="showInfo = true" ng-mouseleave="showInfo = false">
+            <img class="movie-img" ng-src="{{movie.Poster}}">
+            <div class="show-info" ng-show="showInfo">{{movie.Title}}</div>
+          </div>
+        </div>
     </div>
   </div>
 
@@ -71,7 +60,8 @@
     <button type="button" ng-click="searchMoviesAPI(name)">Search</button>
     <!-- <div class="searched-movie" ng-src="x in getMovieAPI"> -->
     <div class="imdb-movies">
-      <img class="imdb-poster" ng-src="{{moviePoster}}" />{{movieTitle}} {{movieYear}}
+      <!-- <img class="imdb-poster" ng-src="{{moviePoster}}" /> -->
+      {{movieTitle}} {{movieYear}}
     </div>
   </div>
 </div>

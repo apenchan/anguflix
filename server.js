@@ -68,17 +68,17 @@ app.use(passport.session());
 app.use('/movies', mainRoute);
 app.use('/auth', authRoute);
 
-// app.get('/movies/:id', function(req, res){
-//   User.findById(req.params.id, function(err, user){
-//     if(err){
-//       console.log("This may not be a good route", err)
-//     } else {
-//       res.send(user)
-//     }
-//   })
-// })
+app.get('/movie/:id/movie', function(req, res){
+  User.findById(req.params.id, function(err, user){
+    if(err){
+      console.log("This may not be a good route", err)
+    } else {
+      res.send(user)
+    }
+  })
+})
 
-app.get('/profile/:id/movie', function(req, res){
+app.get('/movie/:id/movie', function(req, res){
   console.log('user id: ' + req.params.id);
   User.findById(req.params.id, function(err, user){
     if(err){
@@ -86,29 +86,29 @@ app.get('/profile/:id/movie', function(req, res){
     } else {
       res.send(user);
       console.log(user)
-      // json.parse(user)
     }
   })
 })
 
-app.put('/profile/:id/movie', function(req, res){
+app.put('/movie/:id/movie', function(req, res){
   var movie = new Movie(req.body)
-   console.log("query is " + movie)
-   console.log(req.params)
   User.findById(req.params.id, function(err, user){
-    console.log(err, user);
     user.savedMovies.push(movie)
     user.save(function(err, user){
-      console.log('saved');
       if(err){
         console.log(err)
       } else{
-        console.log('success')
         res.send(user)
       }
     })
   })
 })
+
+// app.delete('/:userId/:movieId', function(req, res){
+//   User.findById(req.params.id, funtion(err, foundUser){
+
+//   })
+// })
 
 // app.all('*', function(req, res) {
 //   res.sendFile(__dirname + "/public/index.html")
@@ -116,10 +116,6 @@ app.put('/profile/:id/movie', function(req, res){
 
 app.all('[^.]+', function(req, res, next) {
   res.sendFile(__dirname + "/public/index.html")
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  // next();
 });
 
 app.listen(port);

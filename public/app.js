@@ -5,7 +5,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   // config.EnableCors(cors);
   $locationProvider.html5Mode(true);
   $stateProvider
-  .state('movies', {
+  .state('user', {
     url:'/home',
     controller: 'allMoviesCtrl',
     templateUrl: '/templates/home.html'
@@ -22,11 +22,17 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         console.log(user);
         localStorage.setItem("user", JSON.stringify(user));
         $rootScope.currentUser = user.name;
+        // $rootScope.savedMoviesArr = user.savedMovies
         $http.defaults.headers.common.Authorization = 'Bearer ' + user.token;
-        $state.go('movies');
+        $state.go('user');
       }
     }
   })
+  // .state('user.movie',{
+  //   url: '/movie/:id/movie',
+  //   controller: 'allMoviesCtrl',
+  //   params: { user_id: user.id }
+  // })
   .state('profile', {
     url: '/profile/:id',
     controller: 'profileCtrl',
