@@ -18,8 +18,8 @@
       <!-- <div>{{amount}}$</div> -->
     </div>
     <div class="movie" ng-repeat="movie in userMovies| filter:{Title:movie} | filter:{Year:movieYears} | filter:{movie: moviePrice}">
-      <!-- <div class="movie-info">{{movie.movieTitle}} {{movie.movieDate}} ${{movie.moviePrice}}</div>
-      <div class="mouse-test" ng-init="showInfo-false"> -->
+      <!-- <div class="movie-info">{{movie.movieTitle}} {{movie.movieDate}} ${{movie.moviePrice}}</div>-->
+      <div class="mouse-test" ng-init="showInfo-false"> 
         <div class="show-movie-info" ng-mouseover="showInfo = true" ng-mouseleave="showInfo = false">
           <img class="movie-img" ng-src="{{movie.Poster}}">
           <div class="show-info" ng-show="showInfo">{{movie.Title}} <div class="movie-description">{{movie.Plot}}</div></div>
@@ -60,7 +60,7 @@
     <button type="button" ng-click="searchMoviesAPI(name)">Search</button>
     <!-- <div class="searched-movie" ng-src="x in getMovieAPI"> -->
     <div class="imdb-movies">
-      <!-- <img class="imdb-poster" ng-src="{{moviePoster}}" /> -->
+      <img class="imdb-poster" ng-src="{{moviePoster}}" />
       {{movieTitle}} {{movieYear}}
     </div>
   </div>
