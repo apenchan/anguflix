@@ -26,7 +26,7 @@
         </div>
       </div>
       <span class="remove-button" ng-show="trashClicked">
-          <a ng-click="removeFilm(movie)">Remove</a>
+          <a ng-click="removeFilm($index)">Remove</a>
       </span>
     </div>
     <p class="if-no-movies" ng-hide="userMovies.length">No movies saved. Click on a title below to save to your collection</p>

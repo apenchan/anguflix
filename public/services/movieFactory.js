@@ -65,6 +65,7 @@ app.factory('allMovies', function ($http) {
       // var movieId = this.userMovies
       return $http.delete('/movie/' + id + "/movie/" + movieId)
       .then(function(response){
+        console.log(response.data)
         return response.data
       }, function(err){
         console.log(err)
