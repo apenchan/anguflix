@@ -61,9 +61,9 @@ app.factory('allMovies', function ($http) {
     //   savedMovies.splice(movie, 1)
     // }
 
-    var removeFilm = function(id, movie){
+    var removeFilm = function(id, movieId){
       // var movieId = this.userMovies
-      return $http.delete('/movie/' + id + "/movie/", movie)
+      return $http.delete('/movie/' + id + "/movie/" + movieId)
       .then(function(response){
         return response.data
       }, function(err){

@@ -59,14 +59,17 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 	// }
 
 
-	$scope.removeFilm = function (movie) {
+	$scope.removeFilm = function () {
 		// var self = this;
 		console.log($scope.userMovies)
 		// console.log(savedMovies)
-		allMovies.removeFilm($scope.userId, movie)
-			.then(function (response) {
-				$scope.userMovies.splice(this.movie, 1) = savedMovies
+		allMovies.removeFilm($scope.userId, this.movie._id)
+			.then(function(response){
+				$scope.currentUser.userMovies = response.savedMovies
 			})
+			// .then(function (response) {
+			// 	$scope.userMovies.splice(this.movie, 1) = savedMovies
+			// })
 			.catch(function (err) {
 				console.log(err)
 			})
