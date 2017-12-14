@@ -55,9 +55,20 @@ app.factory('allMovies', function ($http) {
       }
       return years;
     }
-  
-    var removeFilm = function(index) {
-      savedMovies.splice(index, 1)
+    
+    //This does nothing in the DB
+    // var removeFilm = function(movie) {
+    //   savedMovies.splice(movie, 1)
+    // }
+
+    var removeFilm = function(id, movie){
+      // var movieId = this.userMovies
+      return $http.delete('/movie/' + id + "/movie/", movie)
+      .then(function(response){
+        return response.data
+      }, function(err){
+        console.log(err)
+      })
     }
 
     var searchMoviesAPI = function(name){

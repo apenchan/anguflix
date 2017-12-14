@@ -4,7 +4,7 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 
 	//all Movies from DB:
 	allMovies.allMoviesDB()
-		.then(function(response){
+		.then(function (response) {
 			$scope.movies = response;
 		})
 
@@ -18,10 +18,10 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 	// })
 
 	allMovies.getUserMovies($rootScope.userId)
-		.then(function(response){
+		.then(function (response) {
 			$scope.userMovies = response.savedMovies;
 		})
-		.catch(function(err){
+		.catch(function (err) {
 			console.log(err)
 		})
 
@@ -36,47 +36,58 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 	$scope.addToMyMovies = [];
 
 	//this work.
-	$scope.addToMyMovies = function(movie){
+	$scope.addToMyMovies = function (movie) {
 		allMovies.addMovie($scope.userId, movie)
-			.then(function(data){
+			.then(function (data) {
 				$scope.userMovies = data.savedMovies
 			})
-			.catch(function(err){
+			.catch(function (err) {
 				console.log(err)
 			});
 	}
 
-	// $scope.addToMyMovies = function(userId, movie){
-	// 	alert("I was kinda clicked")
-	// 	// console.log($stateParams.user.id)
-	// 	allMovies.addMovie($scope.userId, movie)
-	// 	.then(function(movies_from_db){
-	// 		$scope.userInfo.savedMovies = movies_from_db.savedMovies;
-	// 	})
-	// }
-
 	$scope.years = allMovies.getDates();
-	
+
 	$scope.trashClicked = false;
 
-	$scope.showRemoveOption = function(){
+	$scope.showRemoveOption = function () {
 		$scope.trashClicked = !$scope.trashClicked;
 	}
 
-	$scope.removeFilm = function(movie){
-		allMovies.removeFilm(movie);
+	// $scope.removeFilm = function(movie){
+	// 	allMovies.removeFilm(movie);
+	// }
+
+
+	$scope.removeFilm = function (movie) {
+		// var self = this;
+		console.log($scope.userMovies)
+		// console.log(savedMovies)
+		allMovies.removeFilm($scope.userId, movie)
+			.then(function (response) {
+				$scope.userMovies.splice(this.movie, 1) = savedMovies
+			})
+			.catch(function (err) {
+				console.log(err)
+			})
 	}
 
+	// $scope.removeFilm = function(movieId){
+	// 	allMovies.removeFilm($scope.userId, movieId)
+	// 	.then(function(data){
+	// 		$scope.userMovies.splice(movie, 1)
+	// 	})
+	// }
 
-	$scope.searchMoviesAPI = function(name){
+	$scope.searchMoviesAPI = function (name) {
 		allMovies.searchMoviesAPI(name)
-		.then(function(response){
-			// $scope.getMovieAPI = response;
-			$scope.moviePoster = response.Poster;
-			$scope.movieTitle = response.Title;
-			$scope.movieYear = response.Year;
+			.then(function (response) {
+				// $scope.getMovieAPI = response;
+				$scope.moviePoster = response.Poster;
+				$scope.movieTitle = response.Title;
+				$scope.movieYear = response.Year;
 
-	})
-}
+			})
+	}
 
 });
