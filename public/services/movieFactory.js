@@ -9,29 +9,9 @@ app.factory('allMovies', function ($http) {
       console.log(err);
     })
   }
-  //this returns the "hello", but also a bunch of it
-  // var getUserInfo = function(id){
-  //   return $http.get('/profile/' + id)
-  //   console.log(id)
-  //   .then(function(response){
-  //     return response.data
-  //   }, function(err){
-  //     console.log(err);
-  //   })
-  // }
   
     var savedMovies = [];
 
-    // var getSavedMovies = function(id){
-    //   return $http.get('/profile/' + id + '/movie')
-    //   .then(function(response){
-    //     console.log(response.data)
-    //     return response.data
-    //   }, function(err){
-    //     console.log(err)
-    //   })
-    // }
-  
     var addMovie = function (id, movie) {
       return $http.put('/movie/' + id + '/movie', movie)
         .then(function(response){
@@ -56,11 +36,6 @@ app.factory('allMovies', function ($http) {
       return years;
     }
     
-    //This does nothing in the DB
-    // var removeFilm = function(movie) {
-    //   savedMovies.splice(movie, 1)
-    // }
-
     var removeFilm = function(id, movieId){
       // var movieId = this.userMovies
       return $http.delete('/movie/' + id + "/movie/" + movieId)

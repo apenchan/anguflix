@@ -2,23 +2,34 @@
     font-family: "LemonMilkbold.otf";
     src: url("../fonts/LemonMilkbold.otf");
 }
+@font-face{
+    font-family: "TheBrooklynBold.otf";
+    src: url("../fonts/TheBrooklynBold.otf");
+}
 body{
     /* padding-top:100px; */
 }
-
+.user-info-bar{
+    float: right;
+    margin-right: 5%;
+}
 .headline-nav{
     overflow: hidden;
     position: fixed;
     top: 0;
     width: 100%;
     height: 50px;
-    background-color: red;
+    background-color: white;
     z-index: 150;
+    box-shadow: 5px 5px 5px #999; 
+    -moz-box-shadow: 5px 5px 5px #999;
+    -webkit-box-shadow: 5px 5px 5px #999;
 }
 .main-logo{
-    font-family: "LemonMilkbold.otf";
+    font-family: "TheBrooklynBold.otf";
     font-size: 30px;
-    padding-left: 5%;
+    color:#43997e;
+    padding-left: 30px;
     padding-top: 5px;
 
 }

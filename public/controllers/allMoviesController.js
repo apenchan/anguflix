@@ -54,33 +54,17 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 		$scope.trashClicked = !$scope.trashClicked;
 	}
 
-	// $scope.removeFilm = function(movie){
-	// 	allMovies.removeFilm(movie);
-	// }
-
-
 	$scope.removeFilm = function (index) {
 		// var self = this;
 		console.log($scope.userMovies)
-		// console.log(savedMovies)
 		allMovies.removeFilm($scope.userId, this.movie._id)
 			.then(function(data){
 				$scope.userMovies.splice(index, 1) = data.savedMovies
 			})
-			// .then(function (response) {
-			// 	$scope.userMovies.splice(this.movie, 1) = savedMovies
-			// })
 			.catch(function (err) {
 				console.log(err)
 			})
 	}
-
-	// $scope.removeFilm = function(movieId){
-	// 	allMovies.removeFilm($scope.userId, movieId)
-	// 	.then(function(data){
-	// 		$scope.userMovies.splice(movie, 1)
-	// 	})
-	// }
 
 	$scope.searchMoviesAPI = function (name) {
 		allMovies.searchMoviesAPI(name)

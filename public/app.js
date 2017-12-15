@@ -19,7 +19,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
           id: $stateParams.id
           // token: $stateParams.token
         }
-        console.log(user);
         localStorage.setItem("user", JSON.stringify(user));
         $rootScope.currentUser = user.name;
         // $rootScope.savedMoviesArr = user.savedMovies

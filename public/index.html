@@ -13,22 +13,21 @@
 </head>
 
 <body ng-app="anguFlix">
-  <div class="container" ng-controller="AuthCtrl">
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" ui-sref="movies">Anguflix</a>
-        </div>
-        <a ui-sref="profile({id: user._id, profileParam: profile})"><p class="navbar-text">{{currentUser}}</p></a>
+  <div class="headline-nav" ng-controller="AuthCtrl">
+    <nav class="navbar">
+      <div class="navbar-header">
+        <div class="main-logo">Movie Saver</div>
+      </div>
+      <div class="user-info-bar">
+        <p class="navbar-text">{{currentUser}}</p>
         <a ng-hide="currentUser" target="_self" href="/auth/facebook" class="btn navbar-btn btn-primary">Login</a>
         <button ng-show="currentUser" type="button" ng-click="logout()" class="btn logout btn-default navbar-btn">Log Out</button>
-        <!-- <button type="button" ng-click="logout()" class="btn btn-default navbar-btn">Log Out</button> -->
       </div>
     </nav>
   </div>
   <ui-view></ui-view>
 </body>
-<!-- <ui-view></ui-view> -->
+
 <script src="angular/angular.js"></script>
 <script src="@uirouter/core/_bundles/ui-router-core.js"></script>
 <script src="@uirouter/angularjs/release/ui-router-angularjs.js"></script>
