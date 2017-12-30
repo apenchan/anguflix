@@ -18,8 +18,8 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 	// })
 
 	allMovies.getUserMovies($rootScope.userId)
-		.then(function (response) {
-			$scope.userMovies = response.savedMovies;
+		.then(function (data) {
+			$scope.userMovies = data.savedMovies;
 		})
 		.catch(function (err) {
 			console.log(err)

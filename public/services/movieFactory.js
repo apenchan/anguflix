@@ -1,4 +1,4 @@
-app.factory('allMovies', function ($http) {
+app.factory('allMovies', function ($http, $window, $rootScope) {
 
 
   var allMoviesDB = function(){
@@ -20,11 +20,23 @@ app.factory('allMovies', function ($http) {
     }
 
     var getUserMovies = function(id){
+      console.log($rootScope.id)
       return $http.get('/movie/' + id + '/movie')
         .then(function(response){
           return response.data
         })
     }
+
+    // var id = $rootScope.id;
+
+    // var getUserMovies = function(id){
+    //   var id = $rootScope.id;
+    //   return $http.get('/movie/' + id + '/movie')
+    //     .then(function(response){
+    //       return response.data
+    //     })
+    //     return savedMovies;
+    // }
   
     var years = [];
     var getDates = function () {

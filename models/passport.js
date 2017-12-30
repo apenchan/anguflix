@@ -37,8 +37,6 @@ function(accessToken, refreshToken, profile, done) {
           id: newUser.id,
           name: newUser.name,
         }, config.SECRET_KEY || process.env.SECRET_KEY, { expiresIn: "7d" });
-
-        console.log("aur")
         return done(null, { id: newUser.id, token: token, name: newUser.name });
       }
     });
