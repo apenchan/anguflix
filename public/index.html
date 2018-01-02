@@ -18,13 +18,15 @@
       <div class="navbar-header">
         <div class="main-logo">Movie Saver</div>
       </div>
+
       <div class="user-info-bar">
         <p class="navbar-text">{{currentUser}}</p>
-        <a ng-hide="currentUser" target="_self" href="/auth/facebook" class="btn navbar-btn btn-primary" ng-click()"login()">Login</a>
+        <a ng-hide="currentUser" target="_self" href="/auth/facebook" class="btn navbar-btn btn-primary" ng-click() "login()">Login</a>
         <button ng-show="currentUser" type="button" ng-click="logout()" class="btn logout btn-default navbar-btn">Log Out</button>
       </div>
     </nav>
   </div>
+
   <ui-view></ui-view>
 </body>
 

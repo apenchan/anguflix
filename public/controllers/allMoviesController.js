@@ -1,21 +1,11 @@
 app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allMovies) {
 
-	// $scope.savedMovies =[];
-
 	//all Movies from DB:
 	allMovies.allMoviesDB()
 		.then(function (response) {
 			$scope.movies = response;
 		})
 
-	//SEE MOVIEFACTORY FOR THIS
-	// allMovies.getUserInfo().then(function(response){
-	// 	$scope.userInfo = response.data;
-	// })
-
-	// allMovies.getUser().then(function(response){
-	// 	$scope.movies.savedMovies = response;
-	// })
 
 	allMovies.getUserMovies($rootScope.userId)
 		.then(function (data) {

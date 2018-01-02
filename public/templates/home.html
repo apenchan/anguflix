@@ -1,9 +1,10 @@
 <div class="movie-collection" ng-controller="allMoviesCtrl">
+  
     
       <!--my selections here -->
       <div class="saved-collection">
         <div class="form-group search-my-saved">
-          <input class="form-control" type="text" ng-model="movie" placeholder="Search Saved Titles" />
+          <input class="form-control search-my-saved-input" type="text" ng-model="movie" placeholder="Search Saved Titles" />
           <select class="select-years" ng-model="movieYears">
               <option value>Any Year</option>
                 <option ng-repeat="year in years track by $index">{{year}}</option>
@@ -31,7 +32,7 @@
       <!-- This is the full movie list below-->
       <div class="movies">
         <div class="form-group search-title-all">
-          <input class="form-control" type="text" ng-model="movieName" placeholder="Search Title" />
+          <input class="form-control search-title-all-input" type="text" ng-model="movieName" placeholder="Search Title" />
         </div>
         <div class="movie" ng-repeat="movie in movies | filter:{Title:movieName} track by $index" ng-click="addToMyMovies(movie)">
           <!-- <div class="movie-info">{{movie.Title}} {{movie.Year}} </div><img class="movie-img" ng-src="{{movie.Poster}}"> -->
@@ -46,7 +47,7 @@
     
     
       <div class="form-group search-other-movies">
-        <input class="form-control" type="text" ng-model="name" placeholder="Find other movies" />
+        <input class="form-control search-other-movies-input" type="text" ng-model="name" placeholder="Find other movies" />
         <button type="button" ng-click="searchMoviesAPI(name)">Search</button>
         <!-- <div class="searched-movie" ng-src="x in getMovieAPI"> -->
         <div class="imdb-movies">

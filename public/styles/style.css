@@ -9,6 +9,15 @@
 body{
     /* padding-top:100px; */
 }
+.main-top-search{
+    padding-top: 5px;
+    width: 62%;
+    display: inline-block;
+    text-align: center;
+}
+.search-top-input{
+    width: 50%;
+}
 .user-info-bar{
     float: right;
     margin-right: 5%;
@@ -50,11 +59,9 @@ body{
     height: 50vh;
 }
 .form-group{
-    width: 100%;
     padding-left: 1%;
 }
 .form-control{
-	width: 25%;
 	display: inline-block;
 }
 .testSaved{
@@ -68,7 +75,12 @@ body{
 .search-my-saved{
     padding-top: 36px;
 }
-
+.search-my-saved-input{
+    width: 25%;
+}
+.search-title-all-input{
+    width: 25%;
+}
 .movies{
     overflow: hidden;
     width: 100%;
@@ -97,6 +109,9 @@ img.movie-img:hover {
     transform: scale(1.1);
     display: block;
 } */
+.search-other-movies-input{
+    width:25%;
+}
 .show-movie-info{
     position: relative;
 }

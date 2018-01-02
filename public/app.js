@@ -18,20 +18,16 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
           id: $stateParams.id,
           token: $stateParams.token
         }
-        $window.localStorage.setItem("user", JSON.stringify(user));
+        window.localStorage.setItem("user", JSON.stringify(user));
         $rootScope.currentUser = user.name;
         $rootScope.token = user.token;
+        $rootScope.userId = user.id;
         // $rootScope.savedMoviesArr = user.savedMovies
         $http.defaults.headers.common.Authorization = 'Bearer ' + user.token;
         $state.go('home');
       }
     }
   })
-  // .state('user.movie',{
-  //   url: '/movie/:id/movie',
-  //   controller: 'allMoviesCtrl',
-  //   params: { user_id: user.id }
-  // })
   .state('profile', {
     url: '/profile/:id',
     controller: 'profileCtrl',
