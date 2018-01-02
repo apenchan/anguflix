@@ -78,7 +78,7 @@ app.get('/movie/:id/movie', function (req, res) {
   })
 })
 
-app.get('/movie/:userId/movie', function (req, res) {
+app.get('/movie/:id/movie', function (req, res) {
   console.log('user id: ' + req.params.id);
   User.findById(req.params.id, function (err, user) {
     if (err) {
