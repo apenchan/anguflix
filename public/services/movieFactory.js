@@ -26,7 +26,7 @@ app.factory('allMovies', function ($http, $window, $rootScope) {
           return response.data
         })
     }
-    
+
     var years = [];
     var getDates = function () {
       var currentTime = new Date();

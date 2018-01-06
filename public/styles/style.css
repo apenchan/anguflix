@@ -9,6 +9,18 @@
 body{
     /* padding-top:100px; */
 }
+/* body {
+    background-color: red;
+  } */
+/* div.background{
+    background-color: yellow;
+    height: 100vh;
+} */
+.main-section{
+    /* background: url("../assests/jakob-owens-199505.jpg"); */
+    background-color: red;
+    height: 100vh;
+}
 .main-top-search{
     padding-top: 5px;
     width: 62%;

@@ -1,7 +1,6 @@
 var app = angular.module("anguFlix", ['ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-  // $http.defaults.headers.common.Authorization = 'Bearer ' + user.token;
   $locationProvider.html5Mode(true);
   $stateProvider
   .state('home', {
@@ -28,6 +27,11 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     }
   })
+  .state('login', {
+    url: '/',
+    controller: 'backgroundImgCtrl',
+    templateUrl: '/templates/login-page.html'
+  })
   .state('profile', {
     url: '/profile/:id',
     controller: 'profileCtrl',
@@ -39,7 +43,8 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   })
 });
 
-app.run(['$rootScope',function($rootScope) {
+app.run(['$rootScope',function($rootScope, $state) {
+  $rootScope.$state = $state;
   var user = JSON.parse(localStorage.getItem("user"));
   if (user) {
     $rootScope.userId = user.id;
