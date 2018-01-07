@@ -29,7 +29,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   })
   .state('login', {
     url: '/',
-    controller: 'backgroundImgCtrl',
+    // controller: 'backgroundImgCtrl',
     templateUrl: '/templates/login-page.html'
   })
   .state('profile', {

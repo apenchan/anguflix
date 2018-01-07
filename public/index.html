@@ -12,30 +12,21 @@
   <link rel="stylesheet" type="text/css" href="./styles/style.css">
 </head>
 
-<!-- <div class="background" ng-controller="backgroundImgCtrl">
-    <ui-view></ui-view> -->
 <body ng-app="anguFlix">
-  <div class="background" ng-controller="backgroundImgCtrl">
-      <ui-view></ui-view>
-  <div class="headline-nav" ng-controller="AuthCtrl">
-    <nav class="navbar">
-      <div class="navbar-header">
-        <div class="main-logo">Movie Saver</div>
-      </div>
+    <div class="headline-nav" ng-controller="AuthCtrl">
+      <nav class="navbar">
+        <div class="navbar-header">
+          <div class="main-logo">Cinesaved</div>
+        </div>
 
-      <div class="user-info-bar">
-        <p class="navbar-text">{{currentUser}}</p>
-        <a ng-hide="currentUser" target="_self" href="/auth/facebook" class="btn navbar-btn btn-primary" ng-click() "login()">Login</a>
-        <button ng-show="currentUser" type="button" ng-click="logout()" class="btn logout btn-default navbar-btn">Log Out</button>
-      </div>
-    </nav>
-  </div>
-
-  <!--super interesting! this works with the saved movies background-->
-  <!-- <div class="background" ng-controller="backgroundImgCtrl"> -->
-      <!-- <ui-view></ui-view> -->
-  </div>
-<!-- <ui-view></ui-view> -->
+        <div class="user-info-bar">
+          <p class="navbar-text">{{currentUser}}</p>
+          <a ng-hide="currentUser" target="_self" href="/auth/facebook" class="btn navbar-btn btn-primary" ng-click() "login()">Login</a>
+          <button ng-show="currentUser" type="button" ng-click="logout()" class="btn logout btn-default navbar-btn">Log Out</button>
+        </div>
+      </nav>
+    </div>
+ <div id="main-section" ui-view></div>
 </body>
 
 <script src="angular/angular.js"></script>
