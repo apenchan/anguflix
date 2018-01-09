@@ -15,9 +15,22 @@
     font-family: "CODEBold.otf";
     src: url("../fonts/CODEBold.otf");
 }
+@font-face {
+    font-family: "NOVABOLD.otf";
+    src: url("../fonts/NOVABOLD.otf");
+}
+@font-face {
+    font-family: "couture-bld.otf";
+    src: url("../fonts/couture-bld.otf");
+}
+@font-face{
+    font-family: "Existence-Light.ttf";
+    src: url("../fonts/Existence-Light.ttf")
+}
 *{
     margin: 0;
 }
+body{}
 #main-section{
     height: 100vh;
 }
@@ -26,19 +39,64 @@
     background-size: cover; 
     height: 100%;
     width: 100%;
-    padding-top: 20%;
+    padding-top: 8%;
 }
 .section-one-p{
     margin: 0;
-    font-family: "CODEBold.otf";
+    font-family: "couture-bld.otf";
     display: inline-block;
+    text-align: center;
     font-size: 50px;
-    width: 39%;
+    width: 1000px;
     margin: 3%;
-    background-attachment: fixed;
+    padding-left: 21%;
+    /* background-attachment: fixed; */
     /* text-align: center; */
     color: white;
     font-weight: bold;
+}
+.section-one-p-one{
+    font-family: "NOVABOLD.otf";
+    font-size: 30px;
+    color: white;
+    float: right;
+    padding-right: 20px;
+    margin: 3%;
+    padding-top: 15%;
+    width: 390px;
+
+}
+#home-section-two{
+    background: url("../assests/lloyd-dirks-74271.jpg");
+    background-size: cover;
+    height: 100vh;
+    background-attachment: fixed;
+    padding-top: 7%;
+}
+.section-two-p{
+    font-family: "couture-bld.otf";
+    display: inline-block;
+    font-size: 50px;
+    color: white;
+    width: 720px;
+    margin-right: 16%;
+    margin-left: 18%;
+    position: relative;
+}
+#home-section-three{
+    background: url("../assests/georgia-vagim-381292.jpg");
+    background-size: cover;
+    height: 100vh;
+    background-position: 0px -60px;
+    background-attachment: fixed;
+    padding-top: 7%;
+}
+.section-three-p{
+    color: white;
+    margin: 3%;
+    font-size: 40px;
+    margin-top: 0%;
+    font-family: "couture-bld.otf";
 }
 .main-top-search{
     padding-top: 5px;
@@ -66,12 +124,20 @@
     -webkit-box-shadow: 5px 5px 5px #999;
 }
 .main-logo{
-    font-family: "TheBrooklynBold.otf";
+    font-family: "couture-bld.otf";
     font-size: 30px;
-    color:#43997e;
+    color: #255c74;
     padding-left: 30px;
     padding-top: 5px;
 
+}
+.btn-primary{
+    background-color:#255c74; 
+}
+.navbar-text{
+    font-family: "couture-bld.otf";
+    color: #255c74;
+    font-size: 15px;
 }
 .movie-collection{
     height: 100vh;
@@ -79,6 +145,8 @@
 }
 .if-no-movies{
     text-align: center;
+    font-size: 20px;
+    font-family: "couture-bld.otf";
     margin: 5%;
 }
 .search-title-all{
@@ -121,15 +189,16 @@
     width: 25%;
 }
 img.movie-img{
-    height: 375px;
-    width: 97%;
-    margin-left: 8px;
+    height: 300px;
+    width: 330px;
+    margin-left: 20px;
+    padding: 0px;
 }
 img.movie-img:hover {
     filter: none;
-    -webkit-filter: grayscale(10%);
+    -webkit-filter: grayscale(45%);
     font-size: 40px;
-    transform: scale(1.05);
+    transform: scale(1.15);
     display: block;
 }
 /* img.movie-img:hover ~ img.movie-img {
@@ -151,7 +220,7 @@ img.movie-img:hover {
     bottom: 8px;
     color: white;
     margin: 5%;
-    font-size: 20px;
+    font-size: 30px;
 }
 .search-other-movies{
     padding: 1%;
