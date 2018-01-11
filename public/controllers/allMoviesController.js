@@ -40,7 +40,7 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 
 	$scope.trashClicked = false;
 
-	$scope.showRemoveOption = function () {
+	$scope.showRemoveOption = function (index) {
 		$scope.trashClicked = !$scope.trashClicked;
 	}
 
