@@ -192,14 +192,20 @@ img.movie-img{
     height: 300px;
     width: 330px;
     margin-left: 20px;
-    padding: 0px;
+    padding-top: 8%;
+    z-index: 10;
 }
 img.movie-img:hover {
     filter: none;
     -webkit-filter: grayscale(45%);
     font-size: 40px;
+    /* transform: scale(1.15); */
     transform: scale(1.15);
     display: block;
+    padding-top: 5.5%;
+    z-index: 10;
+    top: 10;
+    bottom: 10;
 }
 /* img.movie-img:hover ~ img.movie-img {
     padding: 20px;
@@ -208,6 +214,7 @@ img.movie-img:hover {
     font-size: 40px;
     transform: scale(1.1);
     display: block;
+    height: 1em;
 } */
 .search-other-movies-input{
     width:25%;

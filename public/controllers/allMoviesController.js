@@ -20,16 +20,17 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 	// })
 
 	//myMovieCollection array
-	$scope.myMovies = allMovies.savedMovies;
+	// $scope.myMovies = allMovies.savedMovies;
 
 	//add to myMovieCollection array
 	$scope.addToMyMovies = [];
 
-	//this work.
+	//this works for movies in db.
 	$scope.addToMyMovies = function (movie) {
-		allMovies.addMovie($scope.userId, movie)
-			.then(function (data) {
-				$scope.userMovies = data.savedMovies
+		console.log($scope.userMovies)		
+		allMovies.addMovie($scope.userId, movie, $scope.movieId)
+			.then(function (response) {
+				$scope.userMovies = response.savedMovies
 			})
 			.catch(function (err) {
 				console.log(err)
@@ -46,7 +47,6 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 
 	$scope.removeFilm = function (index) {
 		// var self = this;
-		console.log($scope.userMovies)
 		allMovies.removeFilm($scope.userId, this.movie._id)
 			.then(function(data){
 				$scope.userMovies.splice(index, 1) = data.savedMovies
@@ -56,14 +56,17 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 			})
 	}
 
-	$scope.searchMoviesAPI = function (name) {
-		allMovies.searchMoviesAPI(name)
+	$scope.apiMovies = {}
+
+	$scope.searchMoviesAPI = function (movie) {
+		allMovies.searchMoviesAPI(movie)
 			.then(function (response) {
-				// $scope.getMovieAPI = response;
-				$scope.moviePoster = response.Poster;
+				// $scope.moviesAPI = response;
+				// $scope.movie = response.data
+				$scope.Poster = response.Poster;
 				$scope.movieTitle = response.Title;
 				$scope.movieYear = response.Year;
-
+				$scope.movieId = response.imdbID;				
 			})
 	}
 
