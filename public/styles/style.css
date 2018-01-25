@@ -30,7 +30,10 @@
 *{
     margin: 0;
 }
-body{}
+body{
+    background: url("https://i.ytimg.com/vi/EZ7la-hMNuk/maxresdefault.jpg");
+    background-color: #f1f1f1;
+}
 #main-section{
     height: 100vh;
 }
@@ -197,9 +200,9 @@ img.movie-img{
 }
 img.movie-img:hover {
     filter: none;
-    -webkit-filter: grayscale(45%);
+    -webkit-filter: grayscale(68%);
+    opacity: .4;
     font-size: 40px;
-    /* transform: scale(1.15); */
     transform: scale(1.15);
     display: block;
     padding-top: 5.5%;
@@ -225,8 +228,9 @@ img.movie-img:hover {
 .show-info{
     position: absolute;
     bottom: 8px;
-    color: white;
-    margin: 5%;
+    text-shadow: 1px 1px 8px black;
+    color: #F8F6F6;
+    margin: 10%;
     font-size: 30px;
 }
 .search-other-movies{

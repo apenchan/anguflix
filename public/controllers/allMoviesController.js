@@ -22,6 +22,8 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 	//myMovieCollection array
 	// $scope.myMovies = allMovies.savedMovies;
 
+	$scope.apiMovies = [];
+
 	//add to myMovieCollection array
 	$scope.addToMyMovies = [];
 
@@ -29,8 +31,8 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 	$scope.addToMyMovies = function (movie) {
 		console.log($scope.userMovies)		
 		allMovies.addMovie($scope.userId, movie, $scope.movieId)
-			.then(function (response) {
-				$scope.userMovies = response.savedMovies
+			.then(function (data) {
+				$scope.userMovies = data.savedMovies
 			})
 			.catch(function (err) {
 				console.log(err)
@@ -56,11 +58,10 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 			})
 	}
 
-	$scope.apiMovies = {}
-
 	$scope.searchMoviesAPI = function (movie) {
 		allMovies.searchMoviesAPI(movie)
 			.then(function (response) {
+				$scope.apiMovies.push(response);
 				// $scope.moviesAPI = response;
 				// $scope.movie = response.data
 				$scope.Poster = response.Poster;
@@ -68,6 +69,13 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 				$scope.movieYear = response.Year;
 				$scope.movieId = response.imdbID;				
 			})
+	}
+
+	$scope.saveMovie = function(movie){
+		allMovies.addMovie($scope.userId, $scope.apiMovies)
+		.then(function(data){
+			$scope.userMovies.apiMovies = data.savedMovies;
+		})
 	}
 
 });
