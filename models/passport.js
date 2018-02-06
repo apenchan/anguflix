@@ -7,7 +7,7 @@ var config = require('../config.js');
 passport.use(new FacebookStrategy({
   clientID: config.clientID,
   clientSecret: config.clientSecret,
-  callbackURL: "http://localhost:3000/auth/facebook/callback/",
+  callbackURL: "http://angumoviewatch.herokuapp.com/auth/facebook/callback/",
   profileFields: ['email', 'displayName']
 },
 function(accessToken, refreshToken, profile, done) {
