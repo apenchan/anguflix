@@ -31,8 +31,8 @@
     margin: 0;
 }
 body{
-    background: url("https://i.ytimg.com/vi/EZ7la-hMNuk/maxresdefault.jpg");
-    background-color: #f1f1f1;
+    /* background: url("https://i.ytimg.com/vi/EZ7la-hMNuk/maxresdefault.jpg");
+    background-color: #f1f1f1; */
 }
 #main-section{
     height: 100vh;

@@ -24,11 +24,11 @@
           </div>
         </div>
       <!-- </div> -->
-      <!-- <i class="fa fa-trash-o" ng-click="showRemoveOption()"></i> -->
-      <!-- <i class="fa fa-check" aria-hidden="true"></i>  -->
-      <!-- <i class="fa fa-check" ng-show="trashClicked"></i> -->
+      <!-- <i class="fa fa-trash-o" ng-click="showRemoveOption()"></i>
+      <i class="fa fa-check" aria-hidden="true"></i>
+       <i class="fa fa-check" ng-show="trashClicked"></i> -->
       <span class="remove-button">
-              <a ng-click="removeFilm(movie)">Remove</a>
+              <a ng-click="removeFilm(movie)"><i class="fa fa-trash-o"></i></a>
       </span>
     </div>
     <p class="if-no-movies" ng-hide="userMovies.length">No movies saved. Click on a title below to save to your collection</p>
@@ -37,7 +37,7 @@
   <!-- This is the full movie list below-->
   <div class="movies">
     <div class="form-group search-title-all">
-      <input class="form-control search-title-all-input" type="text" ng-model="movieName" placeholder="Search Title" />
+      <input class="form-control search-title-all-input" type="text" ng-model="movieName" placeholder="Search Title From Databse" />
     </div>
     <div class="movie" ng-repeat="movie in movies | filter:{Title:movieName} track by $index" ng-click="addToMyMovies(movie)">
       <!-- <div class="movie-info">{{movie.Title}} {{movie.Year}} </div><img class="movie-img" ng-src="{{movie.Poster}}"> -->
