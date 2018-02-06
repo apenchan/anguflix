@@ -30,7 +30,7 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 	//this works for movies in db.
 	$scope.addToMyMovies = function (movie) {
 		console.log($scope.userMovies)		
-		allMovies.addMovie($scope.userId, movie, $scope.movieId)
+		allMovies.addMovie($scope.userId, movie)
 			.then(function (data) {
 				$scope.userMovies = data.savedMovies
 			})
@@ -72,10 +72,26 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 	}
 
 	$scope.saveMovie = function(movie){
-		allMovies.addMovie($scope.userId, $scope.apiMovies)
-		.then(function(data){
-			$scope.userMovies.apiMovies = data.savedMovies;
+		allMovies.saveMovie($scope.userId, $scope.apiMovies, $scope.Poster)
+		.then(function(movie){
+			console.log('-----------------------------')
+			console.log(movie)
+			console.log('-----------------------------')
+
+			$scope.userMovies.push(movie)
+			// console.log('-----------------------------')
+			// console.log(data)
+			// $scope.userMovies.apiMovies = data.savedMovies;
+			// console.log('-----------------------------')
+			
 		})
 	}
+
+	// $scope.saveMovie = function(movie){
+	// 	allMovies.addMovie($scope.userId, $scope.apiMovies)
+	// 	.then(function(data){
+	// 		$scope.userMovies.apiMovies = data.savedMovies;
+	// 	})
+	// }
 
 });

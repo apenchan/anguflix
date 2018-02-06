@@ -53,19 +53,27 @@ app.put('/movie/:id/movie', function (req, res) {
 app.post('/movie/:id/movie', function(req, res){
  User.findById(req.params.id).then(function(user){
    console.log(req.body)
-   var newMovie = new Movie(req.body)
+   var newMovie = new Movie(req.body[0])
    user.savedMovies.push(newMovie)
+   console.log("this is the movie im adding!")
+   console.log(newMovie);
    user.save(function(err, user){
      if(err){
        console.log(err)
      } else {
-       res.send(user);
+       res.send(newMovie);
      }
    })
  })
 })
 
 app.delete('/movie/:id/movie/:movieId', function(req, res){
+  console.log('---------------movie to delete---------------------------')
+  console.log(req.params.id);
+  console.log(req.params.movieId);
+  console.log('---------------movie to delete-------------------------')
+  
+
   User.findByIdAndUpdate(req.params.id, {$pull: {"savedMovies":{_id: req.params.movieId}}}, function(err, user){
     if(err){
       console.log(err)

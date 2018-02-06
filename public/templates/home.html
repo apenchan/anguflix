@@ -24,7 +24,8 @@
           </div>
         </div>
       </div>
-      <i class="fa fa-trash-o" ng-click="trashClicked = !trashClicked"></i>
+      <i class="fa fa-trash-o" ng-click="showRemoveOption($index)"></i>
+      <!-- <i class="fa fa-check" aria-hidden="true"></i>  -->
       <!-- <i class="fa fa-check" ng-show="trashClicked"></i> -->
       <span class="remove-button" ng-show="trashClicked">
               <a ng-click="removeFilm($index)"><i class="fa fa-check"></i></a>
