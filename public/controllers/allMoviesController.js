@@ -43,15 +43,17 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 
 	$scope.trashClicked = false;
 
-	$scope.showRemoveOption = function (index) {
+	$scope.showRemoveOption = function () {
 		$scope.trashClicked = !$scope.trashClicked;
 	}
 
-	$scope.removeFilm = function (index) {
+	$scope.removeFilm = function (movie) {
 		// var self = this;
 		allMovies.removeFilm($scope.userId, this.movie._id)
 			.then(function(data){
-				$scope.userMovies.splice(index, 1) = data.savedMovies
+				// var index = this.movie._id
+				console.log(movie);
+				$scope.userMovies.splice($scope.userMovies.indexOf(movie), 1) == data.savedMovies
 			})
 			.catch(function (err) {
 				console.log(err)
@@ -79,19 +81,8 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 			console.log('-----------------------------')
 
 			$scope.userMovies.push(movie)
-			// console.log('-----------------------------')
-			// console.log(data)
-			// $scope.userMovies.apiMovies = data.savedMovies;
-			// console.log('-----------------------------')
 			
 		})
 	}
-
-	// $scope.saveMovie = function(movie){
-	// 	allMovies.addMovie($scope.userId, $scope.apiMovies)
-	// 	.then(function(data){
-	// 		$scope.userMovies.apiMovies = data.savedMovies;
-	// 	})
-	// }
 
 });

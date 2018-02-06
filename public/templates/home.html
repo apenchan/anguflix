@@ -14,21 +14,21 @@
       <!-- <div class="budget-counter" ng-repeat="movie in movieBudget track by $index" ng-model="amount">${{amount - movie.moviePrice}}</div> -->
       <!-- <div>{{amount}}$</div> -->
     </div>
-    <div class="movie" ng-repeat="movie in userMovies| filter:{Title:movie} | filter:{Year:movieYears} | filter:{movie: moviePrice} track by $index">
+    <div class="movie" ng-repeat="movie in userMovies| filter:{Title:movie} | filter:{Year:movieYears} | filter:{movie: moviePrice}">
       <!-- <div class="movie-info">{{movie.movieTitle}} {{movie.movieDate}} ${{movie.moviePrice}}</div>-->
-      <div class="mouse-test" ng-init="showInfo-false">
+      <!-- <div class="mouse-test" ng-init="showInfo-false"> -->
         <div class="show-movie-info" ng-class="{'img.movie-img': hover}" ng-mouseover="showInfo = true;hover = true" ng-mouseleave="showInfo = false;hover = false">
           <img class="movie-img" ng-src="{{movie.Poster}}">
           <div class="show-info" ng-show="showInfo">{{movie.Title}}
             <div class="movie-description">{{movie.Plot}}</div>
           </div>
         </div>
-      </div>
-      <i class="fa fa-trash-o" ng-click="showRemoveOption($index)"></i>
+      <!-- </div> -->
+      <!-- <i class="fa fa-trash-o" ng-click="showRemoveOption()"></i> -->
       <!-- <i class="fa fa-check" aria-hidden="true"></i>  -->
       <!-- <i class="fa fa-check" ng-show="trashClicked"></i> -->
-      <span class="remove-button" ng-show="trashClicked">
-              <a ng-click="removeFilm($index)"><i class="fa fa-check"></i></a>
+      <span class="remove-button">
+              <a ng-click="removeFilm(movie)">Remove</a>
       </span>
     </div>
     <p class="if-no-movies" ng-hide="userMovies.length">No movies saved. Click on a title below to save to your collection</p>

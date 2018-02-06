@@ -40,8 +40,6 @@ app.factory('allMovies', function ($http, $window, $rootScope) {
 
   var removeFilm = function (id, movieId) {
     console.log('----------heres the movie to delete----------')
-    console.log(id);
-    console.log(movieId);
     // var movieId = this.userMovies
     return $http.delete('/movie/' + id + "/movie/" + movieId)
       .then(function (response) {
