@@ -24,6 +24,11 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 
 	$scope.apiMovies = [];
 
+	//this will show the plot on hover
+	$scope.hoverImg = function(plot){
+		$scope.plot = movie.Plot
+	}
+
 	//add to myMovieCollection array
 	$scope.addToMyMovies = [];
 
@@ -42,6 +47,10 @@ app.controller('allMoviesCtrl', function ($scope, $rootScope, $stateParams, allM
 	$scope.years = allMovies.getDates();
 
 	$scope.trashClicked = false;
+
+	// $scope.hoverIn = function(){
+
+	// }
 
 	$scope.showRemoveOption = function () {
 		$scope.trashClicked = !$scope.trashClicked;
